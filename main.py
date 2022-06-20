@@ -35,17 +35,21 @@ while True:
         elif idade == '':
             window['error_message'].update(error_m)
         else:
-            window['error_message'].update('')
-            with open('users.txt', "a") as f:
+            try:
+                value = int(idade)
+                window['error_message'].update('')
+
+                with open('users.txt', "a") as f:
 
 
-                f.write(name + ": Name\n")
-                f.write(nacionality + ": Nacionality\n")
-                f.write(idade + ": Age\n")
-                f.write("---------------USUARIO---------------\n")
+                    f.write(name + ": Name\n")
+                    f.write(nacionality + ": Nacionality\n")
+                    f.write(idade + ": Age\n")
+                    f.write("---------------USUARIO---------------\n")
+            except:
+                window['error_message'].update("Idade inválida.")
 
 
-                print(open('users.txt', 'r').delete()) 
 
 
 window.close()

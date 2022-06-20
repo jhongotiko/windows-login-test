@@ -66,3 +66,7 @@ s: Name
 s: Nacionality
 s: Age
 ---------------USUARIO---------------
+s: Name
+s: Nacionality
+14: Age
+---------------USUARIO---------------
