@@ -9,7 +9,7 @@ layout = [
     [sg.Text('Nome', text_color='white', size=12, font='Gotham'), sg.InputText(key='nome',  do_not_clear=False)],
     [sg.Text('Nacionalidade', text_color='white', size=12, font='Gotham'), sg.InputText(key='nacionalidade', do_not_clear=False)],
     [sg.Text('Idade', text_color='white', size=12, font='Gotham'), sg.InputText(key='idade', font='Gotham', do_not_clear=False)],
-    [sg.Text('', key='error_message')],
+    [sg.Text('', key='error_message', text_color='red')],
     [sg.Button('Ok', button_color='green', size=2, font='Gotham', ), sg.Button('Cancel', button_color='red', size=12, font='Gotham')]
 ]
 
@@ -26,18 +26,26 @@ while True:
         nacionality = values['nacionalidade']
         idade = values['idade']
 
-
+        error_m = 'Empty'
 
         if name == '':
-             window['error_message'].update('Entrada Vazia')
-             time.sleep(0.5)
-             window['error_message'].update('')
+            window['error_message'].update(error_m)
+        elif nacionality == '':
+            window['error_message'].update(error_m)
+        elif idade == '':
+            window['error_message'].update(error_m)
+        else:
+            window['error_message'].update('')
+            with open('users.txt', "a") as f:
 
-            
+
+                f.write(name + ": Name\n")
+                f.write(nacionality + ": Nacionality\n")
+                f.write(idade + ": Age\n")
+                f.write("---------------USUARIO---------------\n")
 
 
-
-
+                print(open('users.txt', 'r').delete()) 
 
 
 window.close()
